@@ -22,6 +22,16 @@ module.exports = {
         'style-loader',
         'css-loader'
         ]
+      },
+      {
+      // i 大文字の許容 $ 末尾
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loader: 'url-loader',
+        options: {
+          // 2kb 以上
+          limit: 2048,
+          name: './images/[name].[ext]'
+        }
       }
     ]
   },
