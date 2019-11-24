@@ -13,6 +13,18 @@ module.exports = {
     filename: 'main.js',
     path:outputpath
   },
+  module: {
+    rules: [
+      {
+        test: /\.css/,
+        use: [
+        // 逆順に読み込まれることに注意
+        'style-loader',
+        'css-loader'
+        ]
+      }
+    ]
+  },
   devServer: {
     contentBase: outputpath
   }
