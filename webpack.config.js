@@ -23,6 +23,14 @@ module.exports = {
         'css-loader'
         ]
       },
+       {
+        test: /\.scss/,
+        use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+        ]
+      },
       {
       // i 大文字の許容 $ 末尾
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
