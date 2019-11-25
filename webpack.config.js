@@ -2,8 +2,9 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 // 絶対パスの生成
 const outputpath = path.resolve(__dirname, 'dist') 
@@ -63,12 +64,15 @@ module.exports = {
      })
   ],
    optimization: {
-    minimizer: [new UglifyJsPlugin({
+    minimizer: [
+      new UglifyJsPlugin({
          uglifyOptions: {
            compress: {
              drop_console: true
            }
          }
-    })],
+      }), 
+      new OptimizeCSSAssetsPlugin({})
+    ],
   },
 }
