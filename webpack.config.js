@@ -1,6 +1,7 @@
 
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // 絶対パスの生成
 const outputpath = path.resolve(__dirname, 'dist') 
@@ -22,21 +23,13 @@ module.exports = {
         loader: "babel-loader" 
       },
       {
-        test: /\.css/,
+        test: /\.(sc|c)ss$/,
         use: [
-        // 逆順に読み込まれることに注意
-        'style-loader',
-        'css-loader'
-        ]
-      },
-       {
-        test: /\.scss/,
-        use: [
-        'style-loader',
+        MiniCssExtractPlugin.loader,
         'css-loader',
         'sass-loader'
         ]
-      },
+      }, 
       {
       // i 大文字の許容 $ 末尾
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
@@ -60,6 +53,11 @@ module.exports = {
      new HtmlWebPackPlugin({
        template: './src/index.html',
        filename: './index.html'
+     }),
+     new MiniCssExtractPlugin({
+       // name default=main
+       // ハッシュはキャッシュ回避のため
+       filename: '[name].[hash].css'
      })
   ]
 }
