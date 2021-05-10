@@ -20,7 +20,7 @@
   "homepage": "https://github.com/cozy-corner/webpack-learning#readme",
   "dependencies": {
     "html-webpack-plugin": "^3.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
